@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "982490195639",
+    "firebase_url": "https://chaty-d559d.firebaseio.com",
+    "project_id": "chaty-d559d",
+    "storage_bucket": "chaty-d559d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:982490195639:android:99c16f8035ec063c",
+        "android_client_info": {
+          "package_name": "com.example.komoritakeshi.myapp1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "982490195639-faevshkeq8jipg81h550kuqq5fmq71uj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIMBbvmX2--I9c33IqKP7gMzd-FD61Eew"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
