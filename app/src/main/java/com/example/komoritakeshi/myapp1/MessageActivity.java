@@ -34,9 +34,11 @@ import java.util.Random;
 
 public class MessageActivity extends AppCompatActivity {
     private ChatView mChatView;
-    private ArrayList<User> mUsers;
+    private ArrayList<User2> mUsers;
     private ArrayList<Message> messages;
     private int setMessageCount;
+    private String token;
+    private String userName;
 
     private static final int READ_REQUEST_CODE = 100;
 
@@ -45,7 +47,7 @@ public class MessageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
 
-        initUsers();
+        initUsers2();
 
         mChatView = (ChatView) findViewById(R.id.chat_view);
 
@@ -70,29 +72,18 @@ public class MessageActivity extends AppCompatActivity {
         mChatView.setOnClickSendButtonListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                initUsers();
-//                Message message1 = new Message();
-//                message1.setUser(mUsers.get(0));
-//
-//                message1.setMessageText(mChatView.getInputText());
-//                message1.setRightMessage(true);
-//
-//                messages.add(message1);
-//
-//                MessageView messageView  = (MessageView) findViewById(R.id.message_view);
-//
-//                mChatView.send(message1);
-//                messageView.init(messages);
+                initUsers2();
                 MessageManager.getInstance().createMessage(mChatView.getInputText());
+                SendNotificationHelper2.getInstance().sendFCM(token, mChatView.getInputText(), userName ,1);
                 mChatView.setInputText("");
             }
         });
         //呼び出す
-        loadMessages();
+//        loadMessages();
         setUpMessage();
     }
 
-    private void initUsers() {
+    private void initUsers2() {
         mUsers = new ArrayList<>();
         //User id
         int myId = 0;
@@ -101,10 +92,14 @@ public class MessageActivity extends AppCompatActivity {
         String myName = "いけてるメンズ";
 
         int yourId = 1;
-        String yourName = "gyghhvh";
+        userName = "gyghhvh";
 
-        final User me = new User(myId, myName, null);
-        final User you = new User(yourId, yourName, null);
+        String myToken = "eWbfpclvDx4:APA91bFslTKGM0xhoJygqXNIajO9aD2v3_56BtEDZIgSjCO-9f3DnmVjHNcNJE1xw9HcCbqm4UTMv7ov6dIViAYmP9yHR_TOUB-coXH0R0WgW2RZIJh1u1W4EuNL-SStlMbGRy4kKfiA";
+        token = "c8VIHIpnZXI:APA91bH36yXuEziM5R6O_hG_I-u6yVcc17FxUSY44KgWOEbIWtLWK1uUNSssgHakHZLWGXoZ53dEcYGdO6cFKWAq4L1TUcXRBn9hzINEZgasKD56xFGI2mhbKwsuYiOiXdN0GT2R1mHq";
+
+
+        final User2 me = new User2(myId, myName, myToken);
+        final User2 you = new User2(yourId, userName, token);
 
         mUsers.add(me);
         mUsers.add(you);
@@ -126,6 +121,7 @@ public class MessageActivity extends AppCompatActivity {
         if (messages == null) {
             messages = new ArrayList<Message>();
         } else {
+
         }
     }
 
@@ -141,7 +137,7 @@ public class MessageActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        initUsers();
+        initUsers2();
     }
 
     @Override

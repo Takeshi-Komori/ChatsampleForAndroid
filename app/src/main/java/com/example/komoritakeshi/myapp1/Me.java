@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,6 +38,8 @@ public class Me {
 
         Integer population = new Integer(234567); // 値
 
+        String token = FirebaseInstanceId.getInstance().getToken();
+
         // データの格納 (一旦これで！)
         Map twoKeysMap = new HashMap();
         twoKeysMap.put("info", new HashMap());
@@ -45,6 +48,7 @@ public class Me {
         ((Map) twoKeysMap.get("info")).put("age", age);
         ((Map) twoKeysMap.get("info")).put("place", region);
         ((Map) twoKeysMap.get("info")).put("biography", biography);
+        ((Map) twoKeysMap.get("info")).put("token", token);
 
         databaseRef.child(uuid).setValue(twoKeysMap);
     }

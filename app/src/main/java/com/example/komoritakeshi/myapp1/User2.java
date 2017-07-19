@@ -1,110 +1,43 @@
 package com.example.komoritakeshi.myapp1;
 
 import android.graphics.Bitmap;
-import android.provider.Settings;
-import android.util.Log;
 
-import com.github.bassaer.chatmessageview.models.User;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.IgnoreExtraProperties;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-/*
- * Created by komoritakeshi on 2017/07/12.
+/**
+ * Created by komoritakeshi on 2017/07/14.
  */
 
-@IgnoreExtraProperties
-public class User2 extends User{
-    private String name;
-    private String gender;
-    private String age;
-    private String region;
-    private String biography;
-    private String userID;
-    private UserDatabaseCallBack userDatabaseCallBack;
+public class User2 {
+    private int mId;
+    private String mName;
+    private String mToken;
 
-    public User2(String name, String userID){
-        super(0, null, null);
-        this.userID = userID;
-        this.name = name;
+    public User2(int id, String name, String token) {
+        mId = id;
+        mName = name;
+        mToken = token;
     }
 
-//    public User(String name, String gender, String age, String region, String biography) {
-//        this.name = name;
-//        this.gender = gender;
-//        this.age = age;
-//        this.region = region;
-//        this.biography = biography;
-//    }
-
-    public String getName() {
-        return name;
+    public int getmId() {
+        return mId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setmId(int mId) {
+        this.mId = mId;
     }
 
-    public String getGender() {
-        return gender;
+    public String getmName() {
+        return mName;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setmName(String mName) {
+        this.mName = mName;
     }
 
-    public String getAge() {
-        return age;
+    public String getmToken() {
+        return mToken;
     }
 
-    public void setAge(String age) {
-        this.age = age;
-    }
-
-    public String getRegion() {
-        return region;
-    }
-
-    public void setRegion(String region) {
-        this.region = region;
-    }
-
-    public String getBiography() {
-        return biography;
-    }
-
-    public void setBiography(String biography) {
-        this.biography = biography;
-    }
-
-//    private DatabaseReference mDatabase;
-//    // ...
-//    DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("users");
-
-    static void readUsersFromDatabase() {
-
-        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("users");
-        databaseRef.addListenerForSingleValueEvent(
-                new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        Map twoKeysMap = new HashMap();
-                        twoKeysMap = (Map) dataSnapshot.getValue();
-
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                }
-        );
+    public void setmToken(String mToken) {
+        this.mToken = mToken;
     }
 }
